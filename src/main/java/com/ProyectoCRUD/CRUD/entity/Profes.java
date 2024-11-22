@@ -12,7 +12,7 @@ import lombok.Data;
 public class Profes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ProfeID;
+    private Long profeId;
 
     private String FirstName;
 

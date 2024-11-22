@@ -6,25 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 
 public class ProfesService {
     @Autowired
     ProfesRepositorio profesRepositorio;
-    public static List<Profes> getProfes(){
+
+    public List<Profes> getProfes() {
         return profesRepositorio.findAll();
-
     }
-
-    public List<Profes> getProfes(long id){
+//Get
+    public Optional<Profes> getProfe(long id) {
         return profesRepositorio.findById(id);
-
     }
-    public void saveOrUpdate(Profes profes){
+//Guardar y actualizar
+    public void saveOrUpdate(Profes profes) {
         profesRepositorio.save(profes);
     }
-    public void delete(long id){
+//Borrar
+    public void delete(long id) {
         profesRepositorio.deleteById(id);
     }
 }
+
