@@ -8,47 +8,84 @@ document.addEventListener("DOMContentLoaded", fetchProfes);
 const profesorForm = document.getElementById("profesor-form");
 const profesTable = document.getElementById("profes-table").getElementsByTagName("tbody")[0];
 
+// Evento para guardar un nuevo profesor o actualizar uno existente
+profesorForm.addEventListener("submit", async (event) => {
+    event.preventDefault(); // Evitar recargar la página
+
+    const formData = new FormData(profesorForm);
+    const profesor = {
+        firstName: formData.get("firstName"),
+        lastName: formData.get("lastName"),
+        email: formData.get("email"),
+    };
+
+    const profeId = formData.get("profeId");  // Obtener el profeId del formulario (campo oculto)
+
+    let response;
+
+    if (profeId) {
+        // Si profeId existe, es una actualización
+        profesor.profeId = profeId;
+        response = await fetch(`${API_URL}/${profeId}`, {
+            method: "PUT", // Usamos PUT para actualización
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(profesor),
+        });
+    } else {
+        // Crear un nuevo profesor
+        response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(profesor),
+        });
+    }
+
+    if (response.ok) {
+        alert(profeId ? "Profesor actualizado correctamente" : "Profesor registrado exitosamente");
+        profesorForm.reset(); // Limpiar formulario
+        fetchProfes(); // Actualizar la lista
+        document.getElementById("form-title").textContent = "Registrar Profesor";
+        document.querySelector("button[type='submit']").textContent = "Guardar";
+    } else {
+        alert("Error al registrar o actualizar el profesor");
+    }
+});
+
 // Obtener y mostrar la lista de profesores
 async function fetchProfes() {
-    try {
-        const response = await fetch(API_URL);
-        const profes = await response.json();
+    const response = await fetch(API_URL);
+    const profes = await response.json();
 
-        // Verifica si la respuesta contiene datos
-        if (profes.length === 0) {
-            console.log("No hay datos disponibles.");
-            return;
+    // Limpiar tabla
+    profesTable.innerHTML = "";
+
+    // Insertar filas dinámicamente
+    profes.forEach((profe) => {
+        const row = profesTable.insertRow();
+        row.innerHTML = `
+            <td>${profe.profeId}</td>
+            <td>${profe.firstName}</td>
+            <td>${profe.lastName}</td>
+            <td>${profe.email}</td>
+            <td>
+                <button onclick="editProfe(${profe.profeId})">Editar</button>
+                <button onclick="deleteProfe(${profe.profeId})">Eliminar</button>
+            </td>
+        `;
+    });
+
+    $('#profes-table').DataTable({
+        language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/es_es.json' // Cargar archivo de idioma español
         }
-
-        // Limpiar la tabla
-        profesTable.innerHTML = "";
-
-        // Insertar filas dinámicamente
-        profes.forEach((profe) => {
-            const row = profesTable.insertRow();
-            row.innerHTML = `
-                <td>${profe.profeId}</td>
-                <td>${profe.firstName}</td>
-                <td>${profe.lastName}</td>
-                <td>${profe.email}</td>
-                <td>
-                    <button onclick="editProfe(${profe.profeId})">Editar</button>
-                    <button onclick="deleteProfe(${profe.profeId})">Eliminar</button>
-                </td>
-            `;
-        });
-
-        // Inicializar DataTable después de insertar los datos
-        $('#profes-table').DataTable({
-            "paging": true,  // Habilitar paginación
-            "searching": true,  // Habilitar búsqueda
-            "ordering": true,  // Habilitar ordenación de columnas
-        });
-
-    } catch (error) {
-        console.error("Error al obtener los profesores:", error);
-    }
+    });
 }
+
+
 
 // Eliminar un profesor
 async function deleteProfe(profeId) {
@@ -68,7 +105,24 @@ async function deleteProfe(profeId) {
 }
 
 // Editar un profesor
-function editProfe(profeId) {
-    // Puedes llenar el formulario con los datos del profesor a editar aquí
-    alert(`Editar profesor con ID: ${profeId}`);
+async function editProfe(profeId) {
+    // Obtener los datos del profesor a editar
+    const response = await fetch(`${API_URL}/${profeId}`);
+    if (!response.ok) {
+        alert("Error al cargar los datos del profesor");
+        return;
+    }
+
+    const profe = await response.json();
+
+    // Rellenar el formulario con los datos del profesor
+    document.getElementById("firstName").value = profe.firstName;
+    document.getElementById("lastName").value = profe.lastName;
+    document.getElementById("email").value = profe.email;
+    document.getElementById("profeId").value = profe.profeId; // Establecer el profeId en el campo oculto
+
+    // Cambiar el comportamiento del formulario para actualizar
+    document.getElementById("form-title").textContent = "Actualizar Profesor";
+    const submitButton = document.querySelector("button[type='submit']");
+    submitButton.textContent = "Actualizar";
 }

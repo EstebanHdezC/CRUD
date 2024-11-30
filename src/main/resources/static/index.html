@@ -1,25 +1,33 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es">  <!-- Define el idioma del documento como español -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Profesores</title>
+    <meta charset="UTF-8">  <!-- Define la codificación de caracteres del documento -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Hace que el diseño sea responsive (ajuste en dispositivos móviles) -->
+    <title>Gestión de Profesores</title>  <!-- Título que aparece en la pestaña del navegador -->
+
+    <!-- Enlace a la hoja de estilo Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- Enlace a una hoja de estilo personalizada (styles.css) -->
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- Enlace a la librería DataTables para mostrar tablas dinámicas -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 </head>
-<body class="bg-light">
+<body class="bg-light">  <!-- Aplica un fondo claro al cuerpo del documento -->
 <header class="text-center my-4">
+    <!-- Título principal de la página -->
     <h1 class="display-4">Gestión de Profesores</h1>
 </header>
 
-<main class="container">
+<main class="container">  <!-- Contenedor principal de contenido -->
     <section class="mb-5">
+        <!-- Título de la sección de lista de profesores -->
         <h2 id="form-title" class="mb-4 text-center">Lista de Profesores</h2>
         <div class="table-responsive">
+            <!-- Tabla que mostrará la lista de profesores -->
             <table id="profes-table" class="table table-bordered table-striped table-hover">
                 <thead class="thead-dark">
+                <!-- Encabezados de la tabla -->
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
@@ -29,48 +37,53 @@
                 </tr>
                 </thead>
                 <tbody>
-                <!-- Se llenará dinámicamente -->
+                <!-- Aquí se llenarán los datos de los profesores dinámicamente con JavaScript -->
                 </tbody>
             </table>
         </div>
     </section>
 
     <section>
+        <!-- Título de la sección de formulario para registrar un nuevo profesor -->
         <h2 class="mb-4 text-center">Registrar Profesor</h2>
         <form id="profesor-form" class="p-4 border rounded bg-white">
-            <input type="hidden" id="profeId" name="profeId"> <!-- Campo oculto para el profeId -->
+            <!-- Campo oculto para almacenar el ID del profesor si es necesario en la edición -->
+            <input type="hidden" id="profeId" name="profeId">
+            <!-- Campo de texto para el primer nombre del profesor -->
             <div class="form-group">
                 <label for="firstName">Nombre:</label>
                 <input type="text" id="firstName" name="firstName" class="form-control" required>
             </div>
+            <!-- Campo de texto para el apellido del profesor -->
             <div class="form-group">
                 <label for="lastName">Apellido:</label>
                 <input type="text" id="lastName" name="lastName" class="form-control" required>
             </div>
+            <!-- Campo de correo electrónico del profesor -->
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" class="form-control" required>
             </div>
+            <!-- Botón para enviar el formulario -->
             <button type="submit" class="btn btn-primary btn-block">Guardar</button>
         </form>
     </section>
 </main>
 
 <footer class="text-center mt-5">
+    <!-- Pie de página -->
     <p>CRUD Prog.Web © 2024</p>
 </footer>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<!-- Scripts necesarios para el funcionamiento de Bootstrap y DataTables -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> <!-- Popper.js (necesario para algunos componentes de Bootstrap) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- Bootstrap JS -->
+
+<!-- Script necesario para activar la funcionalidad de DataTables -->
+<script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+<!-- Enlace a tu archivo JavaScript (main.js) donde puedes agregar lógica adicional -->
 <script src="js/main.js"></script>
-<script>
-    // Inicializar DataTable para hacer la tabla ordenable y buscar
-    $(document).ready(function () {
-        $('#profes-table').DataTable();
-    });
-</script>
 </body>
 </html>

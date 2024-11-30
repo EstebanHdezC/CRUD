@@ -1,46 +1,85 @@
+/* Estilo general para el cuerpo del documento */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
-    color: #343a40;
+    font-family: 'Arial', sans-serif;  /* Define la fuente del texto como Arial, y usa sans-serif como fuente secundaria en caso de no encontrarse */
+    background-color: #f8f9fa;  /* Establece un color de fondo claro para todo el cuerpo */
+    color: #343a40;  /* Establece el color del texto principal en un gris oscuro */
 }
 
+/* Estilo para el encabezado (h1) */
 header h1 {
-    font-weight: bold;
-    color: #343a40;
+    font-weight: bold;  /* Hace que el texto sea negrita */
+    color: #343a40;  /* Establece el color del texto en un gris oscuro */
 }
 
+/* Estilo para el texto del pie de página */
 footer p {
-    font-size: 0.9em;
-    color: #6c757d;
+    font-size: 0.9em;  /* Establece un tamaño de fuente más pequeño que el normal */
+    color: #6c757d;  /* Establece un color gris más claro para el texto */
 }
 
+/* Estilo para la tabla, agregando un poco de sombra */
 .table {
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;  /* Espacio inferior de 1.5rem entre la tabla y el contenido siguiente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Sombra sutil alrededor de la tabla */
 }
 
+/* Estilo para los botones primarios */
 .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #007bff;  /* Establece el color de fondo en un azul brillante */
+    border-color: #007bff;  /* Establece el color del borde en el mismo azul */
 }
 
+/* Estilo cuando el usuario pasa el mouse por encima de un botón primario */
 .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #004085;
+    background-color: #0056b3;  /* Cambia el color de fondo a un azul más oscuro */
+    border-color: #004085;  /* Cambia el color del borde a un azul aún más oscuro */
 }
 
+/* Estilo del formulario de profesor */
 #profesor-form {
-    max-width: 500px;
-    margin: 0 auto;
+    max-width: 500px;  /* Establece un ancho máximo para el formulario de 500px */
+    margin: 0 auto;  /* Centra el formulario en la página */
 }
 
+/* Estilo para las etiquetas del formulario */
 .form-group label {
-    font-weight: bold;
+    font-weight: bold;  /* Hace que las etiquetas de los campos del formulario sean negritas */
 }
 
+/* Estilo para el pie de página */
 footer {
-    margin-top: 2rem;
-    padding: 1rem 0;
-    background-color: #e9ecef;
-    border-top: 1px solid #dee2e6;
+    margin-top: 2rem;  /* Añade un margen superior de 2rem */
+    padding: 1rem 0;  /* Añade un relleno superior e inferior de 1rem */
+    background-color: #e9ecef;  /* Establece un fondo gris claro */
+    border-top: 1px solid #dee2e6;  /* Añade una línea de borde en la parte superior */
+}
+
+/* Estilo para las tablas de DataTables */
+table.dataTable {
+    width: 100% !important;  /* Asegura que la tabla ocupe todo el ancho disponible */
+    margin-top: 20px;  /* Añade un margen superior de 20px */
+}
+
+/* Personalización de los botones de paginación en DataTables */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    background-color: #007bff;  /* Establece el color de fondo de los botones de paginación */
+    border-color: #007bff;  /* Establece el color del borde de los botones de paginación */
+    color: white;  /* Establece el color del texto de los botones como blanco */
+}
+
+/* Estilo cuando se pasa el mouse sobre los botones de paginación */
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #0056b3;  /* Cambia el color de fondo a un azul más oscuro */
+    border-color: #004085;  /* Cambia el color del borde a un azul más oscuro */
+}
+
+/* Estilo para la información de la tabla en DataTables (ejemplo: "Mostrando 1 a 10 de 50 entradas") */
+.dataTables_wrapper .dataTables_info {
+    color: #343a40;  /* Establece el color del texto a gris oscuro */
+}
+
+/* Estilo para el selector de longitud de la tabla en DataTables (número de entradas a mostrar por página) */
+.dataTables_wrapper .dataTables_length select {
+    background-color: #fff;  /* Establece un fondo blanco para el selector */
+    border: 1px solid #ced4da;  /* Establece un borde gris claro para el selector */
 }

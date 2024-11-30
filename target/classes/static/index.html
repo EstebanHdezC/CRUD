@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Profesores</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- Agregar DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
 </head>
 <body class="bg-light">
 <header class="text-center my-4">
@@ -16,7 +18,7 @@
 
 <main class="container">
     <section class="mb-5">
-        <h2 class="mb-4 text-center">Lista de Profesores</h2>
+        <h2 id="form-title" class="mb-4 text-center">Lista de Profesores</h2>
         <div class="table-responsive">
             <table id="profes-table" class="table table-bordered table-striped table-hover">
                 <thead class="thead-dark">
@@ -29,16 +31,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <!-- Se llenará dinámicamente con JS -->
+                <!-- Se llenará dinámicamente -->
                 </tbody>
             </table>
         </div>
     </section>
 
     <section>
-        <h2 id="form-title" class="mb-4 text-center">Registrar Profesor</h2>
+        <h2 class="mb-4 text-center">Registrar Profesor</h2>
         <form id="profesor-form" class="p-4 border rounded bg-white">
-            <input type="hidden" id="profeId" name="profeId">
+            <input type="hidden" id="profeId" name="profeId"> <!-- Campo oculto para el profeId -->
             <div class="form-group">
                 <label for="firstName">Nombre:</label>
                 <input type="text" id="firstName" name="firstName" class="form-control" required>
@@ -63,15 +65,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-<script src="js/main.js"></script>
 
-<script>
-    // Inicializar DataTable para hacer la tabla ordenable y buscar
-    $(document).ready(function () {
-        $('#profes-table').DataTable();
-    });
-</script>
+<!-- Agregar DataTables JS -->
+<script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+<script src="js/main.js"></script>
 </body>
 </html>
