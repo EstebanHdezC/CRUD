@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-
 public class ProfesService {
     @Autowired
     ProfesRepositorio profesRepositorio;
@@ -17,17 +16,16 @@ public class ProfesService {
     public List<Profes> getProfes() {
         return profesRepositorio.findAll();
     }
-//Get
+
     public Optional<Profes> getProfe(long id) {
         return profesRepositorio.findById(id);
     }
-//Guardar y actualizar
+
     public void saveOrUpdate(Profes profes) {
         profesRepositorio.save(profes);
     }
-//Borrar
+
     public void delete(long id) {
         profesRepositorio.deleteById(id);
     }
 }
-

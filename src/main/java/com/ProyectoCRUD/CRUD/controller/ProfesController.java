@@ -3,7 +3,6 @@ package com.ProyectoCRUD.CRUD.controller;
 import com.ProyectoCRUD.CRUD.Service.ProfesService;
 import com.ProyectoCRUD.CRUD.entity.Profes;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,29 +15,28 @@ public class ProfesController {
     private ProfesService profesService;
 
     @GetMapping
-    public List<Profes> getAll(){
+    public List<Profes> getAll() {
         return profesService.getProfes();
-
     }
 
     @PostMapping
-    public void saveUpdate(@RequestBody Profes profes){
+    public void save(@RequestBody Profes profes) {
         profesService.saveOrUpdate(profes);
-
     }
-    @DeleteMapping("/{ProfeId}")
-    public void deleteProfe(@PathVariable("profeId") Long profeId){
+
+    @PutMapping("/{profeId}") // Cambiar de POST a PUT para actualizaciones
+    public void update(@PathVariable("profeId") Long profeId, @RequestBody Profes profes) {
+        profes.setProfeId(profeId); // Establecer el profeId para actualizar correctamente
+        profesService.saveOrUpdate(profes);
+    }
+
+    @DeleteMapping("/{profeId}")
+    public void deleteProfe(@PathVariable("profeId") Long profeId) {
         profesService.delete(profeId);
-
-    }
-    @GetMapping("/{ProfeId}")
-    public Optional<Profes> getBId(@PathVariable ("ProfeId") Long ProfeId){
-        return profesService.getProfe(ProfeId);
-
-
     }
 
-
-
-
+    @GetMapping("/{profeId}")
+    public Optional<Profes> getById(@PathVariable("profeId") Long profeId) {
+        return profesService.getProfe(profeId);
+    }
 }

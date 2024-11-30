@@ -1,47 +1,46 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 20px;
+header h1 {
+    font-weight: bold;
+    color: #343a40;
 }
 
-h1, h2 {
-    color: #333;
+footer p {
+    font-size: 0.9em;
+    color: #6c757d;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+.table {
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-table, th, td {
-    border: 1px solid #ddd;
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
 }
 
-th, td {
-    padding: 10px;
-    text-align: center;
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
 }
 
-form {
-    max-width: 400px;
+#profesor-form {
+    max-width: 500px;
     margin: 0 auto;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
+.form-group label {
+    font-weight: bold;
 }
 
-input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+footer {
+    margin-top: 2rem;
+    padding: 1rem 0;
+    background-color: #e9ecef;
+    border-top: 1px solid #dee2e6;
 }
